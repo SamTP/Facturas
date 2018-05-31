@@ -1,5 +1,28 @@
 <?php
 
+function conectarMysqlCat($variables){
+
+    $server = $variables['ServidorMySQL'];
+    $uss = $variables['UsuarioMySQL'];
+    $pass = $variables['PassMySQL'];
+    $db=$variables['DBMySQL'];
+
+    $pdo=new PDO("mysql:host='$server';dbname='$db'","'$uss'","'$pass'");
+
+
+}
+function conectarMysqlAnx($variables){
+
+    $server = $variables['ServidorMySQL'];
+    $uss = $variables['UsuarioMySQL'];
+    $pass = $variables['PassMySQL'];
+    $db=$variables['DBMySQL2'];
+
+    $pdo=new PDO("mysql:host='$server';dbname='$db'","'$uss'","'$pass'");
+
+
+}
+
 function conectarOracle($variables){
 
     $server = $variables['ServidorOracle'];
