@@ -24,13 +24,15 @@ function registro($variables)
 
     $rfc = $_POST['rfc'];
     $pass = $_POST['pass'];
+    $name=$_POST['name'];
 
-    $query = "INSERT INTO usuario  VALUES('$rfc','$pass')";
+    $query = "INSERT INTO usuario  VALUES('$rfc','$pass','$name')";
     $query = $pdo->prepare($query);
     $query->execute();
     $result = $query->fetchAll();
     $pdo = null;
     $_SESSION['login']=true;
+    $_SESSION['rfc']=$rfc;
     header("Location: sistema.php");
 
 
@@ -51,6 +53,7 @@ function login($variables){
     $result = $query->fetchColumn();
     if($result==$pass){
         $_SESSION['login']=true;
+        $_SESSION['rfc']=$rfc;
         header("Location:sistema.php");
     }else{
         print "<script type=\"text/javascript\">";
