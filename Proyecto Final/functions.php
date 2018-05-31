@@ -1,4 +1,5 @@
 <?php
+require ('LibreriaCon.php');
 
 $variables = parse_ini_file('Config.ini');
 session_start();
@@ -17,20 +18,14 @@ if (isset($_POST['btnLog'])) {
 
 function registro($variables)
 {
-    $server = $variables['ServidorOracle'];
-    $uss = $variables['UsuarioOracle'];
-    $pass = $variables['PassOracle'];
-    $pdo = new PDO("oci:dbname=$server", "$uss", "$pass");
-
+    
+    $pdo = conectarOracle($variables);
     $rfc = $_POST['rfc'];
     $pass = $_POST['pass'];
     $name=$_POST['name'];
-
     $query = "INSERT INTO usuario  VALUES('$rfc','$pass','$name')";
-    $query = $pdo->prepare($query);
-    $query->execute();
-    $result = $query->fetchAll();
-    $pdo = null;
+    $result=exeQuery($pdo,$query);
+    desconectar($pdo);
     $_SESSION['login']=true;
     $_SESSION['rfc']=$rfc;
     header("Location: sistema.php");
@@ -40,10 +35,8 @@ function registro($variables)
 
 function login($variables){
 
-    $server = $variables['ServidorOracle'];
-    $uss = $variables['UsuarioOracle'];
-    $pass = $variables['PassOracle'];
-    $pdo = new PDO("oci:dbname=$server", "$uss", "$pass");
+
+    $pdo = conectarOracle($variables);
 
     $rfc = $_POST['rfc'];
     $pass = $_POST['pass'];
