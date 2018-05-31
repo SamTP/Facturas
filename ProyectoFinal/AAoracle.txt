@@ -1,0 +1,24 @@
+CREATE TABLE usuario(
+idUsuario number NOT NULL,
+rfc varchar2(15),
+pass varchar2(16)
+);
+
+
+ALTER TABLE usuario ADD (
+  CONSTRAINT us_pk PRIMARY KEY (idUsuario));
+
+CREATE SEQUENCE us_seq START WITH 1;
+
+CREATE OR REPLACE TRIGGER us_bir 
+BEFORE INSERT ON usuario
+FOR EACH ROW
+
+BEGIN
+  SELECT us_seq.NEXTVAL
+  INTO   :new.idUsuario
+  FROM   dual;
+END;
+/
+
+
