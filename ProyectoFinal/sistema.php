@@ -21,13 +21,14 @@
 
     <form action="functions.php" method="post">
         
-        <p>RFC: </p><p><input type="text" name="rfcEmisor" value="<?php echo($_SESSION['rfc']); ?>" disabled></p>
-        <p>Nombre o Razon Social:</p><p><input type="text" value="<?php echo($_SESSION['nombreEmisor']); ?>"></p>
-        <select name="regimenFiscal">
-            <option value="" selected>Seleccione...</option>
+        <p>RFC: </p><p><input type="text" id="rfcEmisor" value="<?php echo($_SESSION['rfc']); ?>" disabled></p>
+        <p>Nombre o Razon Social:</p><p><input id="nombreEmisor" type="text" value="<?php echo($_SESSION['nombreEmisor']); ?>"></p>
+
+        <select id="regimenFiscal">
+            <option value=""selected>Seleccione...</option>
             <option value="regimen1">Regimen Fiscal</option>
         </select>
-        <select name="tipoComprobante">
+        <select id="tipoComprobante">
             <option value="" selected>Seleccione...</option>
             <option value="ingreso">Ingreso</option>
         </select>
@@ -38,21 +39,21 @@
     <h2>Datos del Receptor</h2>
 
 
-    <form action="functions.php" method="post">
+    <form>
         
-         <p>RFC registrado: </p><p><input type="text" name="rfcReceptor" placeholder="RFC receptor" ></p>
-        <p>Nombre o Razon Social</p><p><input type="text" name="nombreEmisor" value="Nombre del Receptor" disabled></p>
-        <select name="residenciaFiscal">
+         <p>RFC registrado: </p><p><input type="text" id="rfcReceptor" placeholder="RFC receptor" ></p>
+        <p>Nombre o Razon Social</p><p><input type="text" id="nombreReceptor" value="Nombre del Receptor" disabled></p>
+        <select id="residenciaFiscal">
             <option value="residencia">Residencia Fiscal</option>
         </select>
-        <select name="noRegistro">
+        <select id="noRegistro">
             <option value="registro">No. de registro de identidad fiscal</option>
         </select>
-        <select name="cfdi">
+        <select id="cfdi">
             <option value="cfdi1">Uso de CFDI</option>
         </select>
         <br><br>
-         <input type="button" name="siguiente" value="siguiente" onclick="comprobante()"; >
+         <input type="button" name="siguiente" value="siguiente" onclick="emisorReceptor()"; >
 
     </form>
     <h2><a href = "logout.php">Salir</a></h2>

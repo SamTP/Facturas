@@ -37,7 +37,9 @@
 		</select></div>
 		<div class="comprobante">Confirmación: <br> <input type="text" name="confirmacion" disabled></div><br>
 		<div class="comprobante">Condiciones de Pago: <br> <input type="text" name="condiciones"></div><br>
-	</form>
+	</form><br><br>
+
+<h2>CFDI Relacionados</h2>
 
 </body>
 </html>

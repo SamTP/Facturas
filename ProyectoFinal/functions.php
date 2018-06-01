@@ -40,13 +40,14 @@ function login($variables){
 
     $rfc = $_POST['rfc'];
     $pass = $_POST['pass'];
-    $query="SELECT pass FROM usuario WHERE rfc='$rfc'";
+    $query="SELECT pass, nombre FROM usuario WHERE rfc='$rfc'";
     $query = $pdo->prepare($query);
     $query->execute();
-    $result = $query->fetchColumn();
-    if($result==$pass){
+    $result = $query->fetchObject();
+    if($result->PASS==$pass){
         $_SESSION['login']=true;
         $_SESSION['rfc']=$rfc;
+        $_SESSION['nombreEmisor'] = $result->NOMBRE;
         header("Location:sistema.php");
     }else{
         print "<script type=\"text/javascript\">";
