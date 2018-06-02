@@ -6,6 +6,8 @@ function comprobante(){
 
 function emisorReceptor(){
 
+//Emisor
+
 	sessionStorage.setItem("rfcEmisor", document.getElementById('rfcEmisor').value);
 	sessionStorage.setItem("nombreEmisor", document.getElementById('nombreEmisor').value);
 	sessionStorage.setItem("regimenFiscal", document.getElementById('regimenFiscal').value);
@@ -22,5 +24,42 @@ function emisorReceptor(){
 
 
 
+
+}
+
+
+function rellenarReg(){
+
+	saveAjax = new XMLHttpRequest();
+	saveAjax.open('GET',"http://localhost:9999/ProyectoFinal/functions.php?f=regFiscal");
+	saveAjax.send();
+
+	saveAjax.onreadystatechange = function(){
+				if (saveAjax.readyState == 4 && saveAjax.status == 200) {
+					var info = (saveAjax.responseText);
+					document.getElementById('regimenFiscal').innerHTML += info;
+					
+					
+				}
+			}
+
+}
+
+
+function generar(){
+	//solo genera el html de los option con info de los catalogos
+
+	saveAjax = new XMLHttpRequest();
+	saveAjax.open('GET',"http://localhost:9999/ProyectoFinal/functions.php?f=tipoComprobante");
+	saveAjax.send();
+
+	saveAjax.onreadystatechange = function(){
+				if (saveAjax.readyState == 4 && saveAjax.status == 200) {
+					console.log(saveAjax.responseText);
+					
+					
+					
+				}
+			}
 
 }

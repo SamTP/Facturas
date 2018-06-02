@@ -7,7 +7,8 @@ function conectarMysqlCat($variables){
     $pass = $variables['PassMySQL'];
     $db=$variables['DBMySQL'];
 
-    $pdo=new PDO("mysql:host='$server';dbname='$db'","'$uss'","'$pass'");
+    $pdo = new PDO("mysql:host=$server;dbname=$db","$uss","$pass");
+    return $pdo;
 
 
 }

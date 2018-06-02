@@ -2,6 +2,7 @@
 require ('LibreriaCon.php');
 
 $variables = parse_ini_file('Config.ini');
+
 session_start();
 
 
@@ -15,6 +16,11 @@ if (isset($_POST['btnLog'])) {
     login($variables);
 
 }
+if(function_exists($_GET['f'])) {
+   $_GET['f']($variables);
+}
+
+
 
 function registro($variables)
 {
@@ -57,6 +63,50 @@ function login($variables){
     }
     $pdo = null;
     
+
+}
+
+function regFiscal($variables){
+
+    $pdo = conectarMysqlCat($variables);
+
+    $query = "SELECT descripcion, c_RegimenFiscal  FROM c_regimenfiscal";
+    $query = $pdo->prepare($query);
+    $query->execute();
+    $result = $query->fetchAll();
+
+    $tam = sizeof($result);
+
+    for ($i=0; $i < $tam ; $i++) { 
+
+
+
+       echo("<option value=".$result[$i]['c_RegimenFiscal'].">".$result[$i]['descripcion']."</option>");
+    
+
+    }
+
+}
+
+function tipoComprobante($variables){
+
+    $pdo = conectarMysqlCat($variables);
+
+    $query = "SELECT c_UsoCFDI, Descripcion FROM c_usocfdi";
+    $query = $pdo->prepare($query);
+    $query->execute();
+    $result = $query->fetchAll();
+
+    $tam = sizeof($result);
+
+    for ($i=0; $i < $tam ; $i++) { 
+
+
+
+       echo("<option value=".$result[$i]['c_UsoCFDI'].">".$result[$i]['Descripcion']."</option>");
+    
+
+    }
 
 }
 

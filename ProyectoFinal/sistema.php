@@ -1,6 +1,6 @@
 <?php
 
-    //include('login.php');
+    include('login.php');
 
 ?>
 
@@ -26,11 +26,14 @@
 
         <select id="regimenFiscal">
             <option value=""selected>Seleccione...</option>
-            <option value="regimen1">Regimen Fiscal</option>
         </select>
         <select id="tipoComprobante">
             <option value="" selected>Seleccione...</option>
-            <option value="ingreso">Ingreso</option>
+            <option value="E">Egreso</option>
+            <option value="I">Ingreso</option>
+            <option value="N">Nomina</option>
+            <option value="P">Pago</option>
+            <option value="T">Traslado</option>
         </select>
 
     </form>
@@ -51,11 +54,17 @@
         </select>
         <select id="cfdi">
             <option value="cfdi1">Uso de CFDI</option>
+            <option value=D01>Honorarios medicos, dentales y gastos hospitalarios.</option><option value=D02>Gastos medicos por incapacidad o discapacidad</option><option value=D03>Gastos funerales.</option><option value=D04>Donativos.</option><option value=D05>Intereses reales efectivamente pagados por cr?ditos hipotecarios (casa habitaci?n).</option><option value=D06>Aportaciones voluntarias al SAR.</option><option value=D07>Primas por seguros de gastos m?dicos.</option><option value=D08>Gastos de transportaci?n escolar obligatoria.</option><option value=D09>Dep?sitos en cuentas para el ahorro, primas que tengan como base planes de pensiones.</option><option value=D10>Pagos por servicios educativos (colegiaturas)</option><option value=G01>Adquisici?n de mercancias</option><option value=G02>Devoluciones, descuentos o bonificaciones</option><option value=G03>Gastos en general</option><option value=I01>Construcciones</option><option value=I02>Mobilario y equipo de oficina por inversiones</option><option value=I03>Equipo de transporte</option><option value=I04>Equipo de computo y accesorios</option><option value=I05>Dados, troqueles, moldes, matrices y herramental</option><option value=I06>Comunicaciones telef?nicas</option><option value=I07>Comunicaciones satelitales</option><option value=I08>Otra maquinaria y equipo</option><option value=P01>Por definir</option>
         </select>
         <br><br>
          <input type="button" name="siguiente" value="siguiente" onclick="emisorReceptor()"; >
 
     </form>
     <h2><a href = "logout.php">Salir</a></h2>
+
+
+    <script type="text/javascript">
+    window.addEventListener('load', rellenarReg, true);
+    </script>
 </body>
 </html>
