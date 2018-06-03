@@ -1,11 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 *{
   padding: 0px;
   margin: 0px;
+  font-family: 'Roboto', sans-serif;
+  color: #545454;
 }
- 
+*, :after, :before {
+    box-sizing: border-box;
+}
+.form-horizontal .form-group:after, .form-horizontal, .form-group:before {
+    content: " ";
+    display: table;
+}
+h2{
+	margin: 20px;
+	position: relative;
+}
+div {
+    display: block;
+}
+label{
+	display: inline-block;
+	font-weight: 700;
+	text-align: right;
+	padding-right: 30px;
+}
+input[type=text], input[type=number] {
+    font-size: 16px;
+}
+form{
+	margin-top: 50px;
+	position: relative;
+	width: 80%;
+	left: 10%;
+}
+.form-horizontal .form-group {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.col-sm-8 {
+    width: 66.6666666667%;
+    float: left;
+}
+.col-sm-4 {
+    width: 33.3333333333%;
+    float: left;
+}
+.form-horizontal .control-label {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 7px;
+}
 .comprobante{
 	position: relative;
 	display: inline-block;
 	margin-left: 25px;
 	margin-top: 15px;
 }
+
+.form-control{
+	position: relative;
+	width: 100%;
+    height: 39px;
+    padding: 6px 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-control, output {
+    font-size: 18px;
+    line-height: 1.428571429;
+    color: #555;
+    display: block;
+}
+	
