@@ -19,8 +19,9 @@ function conectarMysqlAnx($variables){
     $pass = $variables['PassMySQL'];
     $db=$variables['DBMySQL2'];
 
-    $pdo=new PDO("mysql:host='$server';dbname='$db'","'$uss'","'$pass'");
+    $pdo=new PDO("mysql:host=$server;dbname=$db","$uss","$pass");
 
+    return $pdo;
 
 }
 

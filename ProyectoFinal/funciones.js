@@ -63,3 +63,28 @@ function generar(){
 			}
 
 }
+function receptor(){
+
+	var rfc = document.getElementById('rfcReceptor').value;
+	saveAjax = new XMLHttpRequest();
+	saveAjax.open('GET',"http://localhost:9999/ProyectoFinal/functions.php?f=receptor&rfc="+rfc);
+	saveAjax.send();
+
+
+	saveAjax.onreadystatechange = function(){
+				if (saveAjax.readyState == 4 && saveAjax.status == 200) {
+					console.log(saveAjax.responseText);
+
+					if (saveAjax.responseText != "no") {
+
+						document.getElementById('nombreReceptor').value = saveAjax.responseText;
+
+					}
+					
+					
+					
+				}
+			}
+
+
+}

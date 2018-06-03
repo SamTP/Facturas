@@ -16,7 +16,12 @@ if (isset($_POST['btnLog'])) {
     login($variables);
 
 }
-if(function_exists($_GET['f'])) {
+// if(function_exists($_GET['f'])) {
+//    $_GET['f']($variables);
+// }
+if(function_exists($_GET['f']) && $_GET['f'] == "receptor") {
+   $_GET['f']($variables,$_GET['rfc']);
+}else {
    $_GET['f']($variables);
 }
 
@@ -107,6 +112,24 @@ function tipoComprobante($variables){
     
 
     }
+
+}
+
+function receptor($variables, $rfc){
+
+     $pdo = conectarMysqlAnx($variables);
+
+    $query = "SELECT RFC, Nombre FROM receptor WHere RFC = '$rfc';";
+    $query = $pdo->prepare($query);
+    $query->execute();
+    $result = $query->fetchObject();
+    if ($result) {
+        # code...
+        echo($result->Nombre);
+    }else{
+    echo("no");
+}
+
 
 }
 

@@ -44,7 +44,7 @@
 
     <form>
         
-         <p>RFC registrado: </p><p><input type="text" id="rfcReceptor" placeholder="RFC receptor" ></p>
+         <p>RFC registrado: </p><p><input type="text" id="rfcReceptor" placeholder="RFC receptor" onkeyup="receptor()"></p>
         <p>Nombre o Razon Social</p><p><input type="text" id="nombreReceptor" value="Nombre del Receptor" disabled></p>
         <select id="residenciaFiscal">
             <option value="residencia">Residencia Fiscal</option>
