@@ -146,6 +146,149 @@ include('login.php');
         </form>
         <br>
         <br>
+        <form style="height: 450px;">
+            <h2>Concepto</h2>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Clave de producto o servicio*:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="claveprod">
+                </div>
+            </div><br><br>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Cantidad*:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="cantidad">
+                </div>
+            </div><br><br>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Unidad:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="unidad">
+                </div>
+            </div><br><br>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Clave Unidad*:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="claveUnidad">
+                </div>
+            </div><br><br>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Numero de identificación:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="noIdentificacion">
+                </div>
+            </div><br><br>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Descripción:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="descripcion">
+                </div>
+            </div><br><br>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Valor Unitario:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="valorU">
+                </div>
+            </div><br><br>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                    Importe*:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="importe" disabled>
+                </div>
+            </div><br><br>
+
+        </form>
+
+
+         <form >
+            <h2>Impuestos:</h2>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                   Impuesto*:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="impuesto" value="IVA" disabled>
+                </div>
+            </div><br><br>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                   Tasa*:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="tasa" value="16" disabled>
+                </div>
+            </div><br><br>
+
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                   Importe*:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="importeTotal" value="Suma de todo con impuesto" disabled>
+                </div>
+            </div><br><br>
+
+
+        </form>
+
+         <form >
+            <h2>Resumen:</h2>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                   Subtotal*:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="subtotal" value="subtotal" disabled>
+                </div>
+            </div><br><br>
+
+             <div class="form-group">
+                <label class="col-sm-4 control-label">
+                   Total de impuestos trasladados*:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="impuestosTras" value="impuestos trasladados" disabled>
+                </div>
+            </div><br><br>
+
+             <div class="form-group">
+                <label class="col-sm-4 control-label">
+                   Total*:
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="total" value="total" disabled>
+                </div>
+            </div><br><br>
+           
+        </form>
+
+      
+
         <h2><a href = "logout.php">Salir</a></h2>
     </body>
 </html>
