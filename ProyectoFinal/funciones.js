@@ -22,7 +22,7 @@ function emisorReceptor(){
 	sessionStorage.setItem("noRegistro", document.getElementById('noRegistro').value);
 	sessionStorage.setItem("cfdi", document.getElementById('cfdi').value);
 
-	
+
 	location.replace("sistema2.php");
 
 

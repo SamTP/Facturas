@@ -22,7 +22,7 @@ include('login.php');
                     Fecha y hora de Expedición:
                 </label>
                 <div class="col-sm-8">
-                    <input class="form-control" type="datetime-local" id="fechaExpedicion" required>
+                    <input class="form-control" type="text" id="fechaExpedicion" value="<?php print(date("Y-m-d")."T".date("h:i:s")) ?>" disabled>
                 </div>
                 
             </div>

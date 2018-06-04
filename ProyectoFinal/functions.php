@@ -16,12 +16,10 @@ if (isset($_POST['btnLog'])) {
     login($variables);
 
 }
-// if(function_exists($_GET['f'])) {
-//    $_GET['f']($variables);
-// }
+
 if(function_exists($_GET['f']) && $_GET['f'] == "receptor") {
    $_GET['f']($variables,$_GET['rfc']);
-}else {
+}else{
    $_GET['f']($variables);
 }
 
@@ -118,7 +116,7 @@ function tipoComprobante($variables){
 
 function receptor($variables, $rfc){
 
-     $pdo = conectarMysqlAnx($variables);
+    $pdo = conectarMysqlAnx($variables);
 
     $query = "SELECT RFC, Nombre FROM receptor WHere RFC = '$rfc';";
     $query = $pdo->prepare($query);
@@ -129,11 +127,26 @@ function receptor($variables, $rfc){
         echo($result->Nombre);
     }else{
     echo("no");
-}
+    }
 
 
 }
 
+function guardarER($variables,$rfcEmisor,$rfcReceptor,$cfdi,$nombreEmisor,$nombreReceptor,$regimen,$residencia,$tipoC,$noR){
+
+    $pdo = conectarMysqlAnx($variables);
+
+    $query = "INSERT INTO  emisor  VALUES ('$rfcEmisor', '$nombreEmisor', '$regimen');";
+    $query = $pdo->prepare($query);
+    $query->execute();
+
+    $quer2 = "INSERT INTO  receptor  VALUES ('$rfcEmisor', '$nombreEmisor', '$regimen');";
+    $query2 = $pdo->prepare($query);
+    $query2->execute();
+
+
+
+}
 
 
 
