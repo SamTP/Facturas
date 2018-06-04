@@ -71,6 +71,7 @@ function login($variables){
 
 }
 
+//innecessarias
 function regFiscal($variables){
 
     $pdo = conectarMysqlCat($variables);

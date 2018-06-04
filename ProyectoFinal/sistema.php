@@ -1,5 +1,5 @@
 <?php
-//include('login.php');
+include('login.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,6 +40,8 @@
                 <div class="col-sm-8">
                     <select class="form-control" id="regimenFiscal">
                         <option value="" selected>Seleccione...</option>
+                         <option value="" selected="">Seleccione...</option>
+                    <option value="601">General de Ley Personas Morales</option><option value="603">Personas Morales con Fines no Lucrativos</option><option value="605">Sueldos y Salarios e Ingresos Asimilados a Salarios</option><option value="606">Arrendamiento</option><option value="607">Régimen de Enajenación o Adquisición de Bienes</option><option value="608">Demós ingresos</option><option value="609">Consolidación</option><option value="610">Residentes en el Extranjero sin Establecimiento Permanente en México</option><option value="611">Ingresos por Dividendos (socios y accionistas)</option><option value="612">Personas Físicas con Actividades Empresariales y Profesionales</option><option value="614">Ingresos por intereses</option><option value="615">Régimen de los ingresos por obtención de premios</option><option value="616">Sin obligaciones fiscales</option><option value="620">Sociedades Cooperativas de Producción que optan por diferir sus ingresos</option><option value="621">Incorporación Fiscal</option><option value="622">Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras</option><option value="623">Opcional para Grupos de Sociedades</option><option value="624">Coordinados</option><option value="628">Hidrocarburos</option><option value="629">De los Regímenes Fiscales Preferentes y de las Empresas Multinacionales</option><option value="630">Enajenación de acciones en bolsa de valores</option>
                     </select>
                 </div>
             </div>
@@ -67,7 +69,7 @@
                     RFC registrado:
                 </label>
                 <div class="col-sm-8">
-                    <input class="form-control" type="text" id="rfcReceptor" placeholder="RFC receptor" onkeyup="receptor()">
+                    <input class="form-control" type="text" id="rfcReceptor" placeholder="RFC receptor" onkeyup="receptor()" >
                 </div>
             </div>
             <div class="form-group">
@@ -75,7 +77,7 @@
                     Nombre o Razon Social:
                 </label>
                 <div class="col-sm-8">
-                    <input class="form-control" type="text" id="nombreReceptor" placeholder="Nombre del Receptor">
+                    <input class="form-control" type="text" id="nombreReceptor" placeholder="Nombre del Receptor"disabled>
                 </div>
             </div>
             <div class="form-group">
@@ -101,11 +103,11 @@
             </div>
             <div class="form-group">
                 <label class="col-sm-4 control-label">
-                    Numero de Registro:
+                    Uso de CFDI:
                 </label>
                 <div class="col-sm-8">
                     <select class="form-control" id="cfdi">
-                        <option value="cfdi1">Uso de CFDI</option>
+                        <option value="" selected>Selecciona...</option>
                         <option value=D01>Honorarios medicos, dentales y gastos hospitalarios.</option>
                         <option value=D02>Gastos medicos por incapacidad o discapacidad</option>
                         <option value=D03>Gastos funerales.</option>
@@ -142,7 +144,7 @@
         </form>
         <h2><a href = "logout.php">Salir</a></h2>
         <script type="text/javascript">
-        window.addEventListener('load', rellenarReg, true);
+        //window.addEventListener('load', rellenarReg, true);
         </script>
     </body>
 </html>
