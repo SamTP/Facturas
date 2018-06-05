@@ -15,7 +15,7 @@ function conectarMysqlCat($variables){
 function conectarMysqlAnx($variables){
 
     $server = $variables['ServidorMySQL'];
-    $uss = $variables['UsuarioMySQL'];
+    $uss = $variables['UsuarioMysQL'];
     $pass = $variables['PassMySQL'];
     $db=$variables['DBMySQL2'];
 

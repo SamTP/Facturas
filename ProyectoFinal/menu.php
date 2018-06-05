@@ -39,6 +39,12 @@ include('login.php');
                 
             </div><br><br>
 
+            <div class="form-group">
+                <label class="col-sm-4 control-label">
+                 <a href = "registro.html">Registrar Receptor</a>
+                </label>
+                
+            </div><br><br>
 
         </form>
 

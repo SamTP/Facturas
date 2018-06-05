@@ -28,16 +28,16 @@ if(function_exists($_GET['f']) && $_GET['f'] == "receptor") {
 function registro($variables)
 {
     
-    $pdo = conectarOracle($variables);
+    $pdo = conectarMysqlAnx($variables);
     $rfc = $_POST['rfc'];
-    $pass = $_POST['pass'];
+    $res = $_POST['res'];
     $name=$_POST['name'];
-    $query = "INSERT INTO usuario  VALUES('$rfc','$pass','$name')";
+    $num=$_POST['num'];
+    $query = "INSERT INTO receptor  VALUES('$rfc','$name','$res','$num',1)";
     $result=exeQuery($pdo,$query);
     desconectar($pdo);
-    $_SESSION['login']=true;
-    $_SESSION['rfc']=$rfc;
-    header("Location: index.php");
+  
+    header("Location: menu.php");
 
 
 }

@@ -30,9 +30,7 @@
             <input type="submit" name="btnLog" value="Entrar">
         </p>
     </form>
-    <p>
-        <input type="button"  onclick="location.href='registro.html'"; name="btnReg" value="Registrarse" >
-    </p>
+
 </body>
 <footer>
     <h6>
