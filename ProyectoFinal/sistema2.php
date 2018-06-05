@@ -117,7 +117,7 @@
                     Tipo de Relación:
                 </label>
                 <div class="col-sm-8">
-                    <select class="form-control" id="metodoPago" required>
+                    <select class="form-control" id="tipoRelacion" required>
                         <option value="metodoPago">01 Pago en una sola exhibición</option>
                     </select>
                 </div>
@@ -228,10 +228,10 @@
                     </div>
                 </div><br><br>
                 <div class="col-sm-4">
-                    <input class="btn btn-default" type="button" value="Cerrar" style="float: none;" onclick="cerrarModal();">
+                    <input class="btn btn-default" type="button" value="Cerrar" style="float: none;" onclick="cerrarModal(); ">
                 </div>
                 <div class="col-sm-4">
-                    <input class="btn btn-primary" type="button" value="Agregar" style="float: none">
+                    <input class="btn btn-primary" type="button" value="Agregar" style="float: none" onclick="agregarConceptos();">
                 </div>
             </form>
         </div>
@@ -267,7 +267,9 @@
         </div><br><br>
         
     </form>
-    
+    <div class="col-sm-4" style="position: absolute; right: 20px; width: 250px">
+        <input class="btn btn-primary" type="button" value="Guardad Comprobante" style="float: none">
+    </div>
     <h2><a href = "logout.php">Salir</a></h2>
 </body>
 </html>

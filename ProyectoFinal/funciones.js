@@ -16,12 +16,59 @@ function emisorReceptor(){
 	sessionStorage.setItem("noRegistro", document.getElementById('noRegistro').value);
 	sessionStorage.setItem("cfdi", document.getElementById('cfdi').value);
 
+	var conceptos = ['.'];
+	sessionStorage.setItem("conceptos", JSON.stringify(conceptos));
+
 
 	location.replace("sistema2.php");
 
 
 }
+function comprobantes(){
 
+	sessionStorage.setItem("fechaExpedicion", document.getElementById('fechaExpedicion').value);
+	sessionStorage.setItem("lugarExpedicion", document.getElementById('lugarExpedicion').value);
+	sessionStorage.setItem("serie", document.getElementById('serie').value);
+	sessionStorage.setItem("folio", document.getElementById('folio').value);
+	sessionStorage.setItem("moneda", document.getElementById('moneda').value);
+	sessionStorage.setItem("tipoCambio", document.getElementById('tipoCambio').value);
+	sessionStorage.setItem("formaPago", document.getElementById('formaPago').value);
+	sessionStorage.setItem("metodoPago", document.getElementById('metodoPago').value);
+	sessionStorage.setItem("confirmacion", document.getElementById('confirmacion').value);
+	sessionStorage.setItem("condiciones", document.getElementById('condiciones').value);
+	sessionStorage.setItem("tipoRelacion", document.getElementById('tipoRelacion').value);
+	sessionStorage.setItem("subtotal", document.getElementById('subtotal').value);
+	sessionStorage.setItem("impuestosTras", document.getElementById('impuestosTras').value);
+	sessionStorage.setItem("total", document.getElementById('total').value);
+
+	//location.replace("sistema2.php");
+
+
+}
+
+function agregarConceptos(){
+
+	claveprod = document.getElementById('claveprod').value;
+	cantidad = document.getElementById('cantidad').value;
+	unidad = document.getElementById('unidad').value;
+	claveUnidad = document.getElementById('claveUnidad').value;
+	noIdentificacion = document.getElementById('noIdentificacion').value;
+	descripcion = document.getElementById('descripcion').value;
+	valorU = document.getElementById('valorU').value;
+	importe = document.getElementById('importe').value;
+	impuesto = document.getElementById('impuesto').value;
+	tasa = document.getElementById('tasa').value;
+	importeTotal = document.getElementById('importeTotal').value;
+
+
+	var array = [claveprod, cantidad, unidad, claveUnidad, noIdentificacion,descripcion, valorU, importe, impuesto, tasa, importeTotal];
+
+	conceptos = JSON.parse(sessionStorage.getItem("conceptos"));
+
+	conceptos.push(array);
+
+	sessionStorage.setItem("conceptos", JSON.stringify(conceptos));
+}
 
 
 
