@@ -149,3 +149,17 @@ function eliminar(id){
 
 
 }
+
+
+function cerrarModal(){
+
+	document.getElementById('modal1').style.visibility = 'hidden';
+	document.getElementById('modal2').style.visibility = 'hidden';
+
+
+}
+
+function abrirModal(){
+	document.getElementById('modal1').style.visibility = 'visible';
+	document.getElementById('modal2').style.visibility = 'visible';
+}

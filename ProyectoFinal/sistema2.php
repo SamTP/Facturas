@@ -1,5 +1,5 @@
 <?php
-include('login.php');
+//include('login.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -110,7 +110,7 @@ include('login.php');
             </div>
         </form>
         
-        <form>
+        <form style="height: 150px;">
             <h2>CFDI Relacionados </h2>
             <div class="form-group">
                 <label class="col-sm-4 control-label">
@@ -122,173 +122,152 @@ include('login.php');
                     </select>
                 </div>
             </div>
+        </form>
+        <form style="height: 100px;">
+            <h2>Conceptos</h2>
             <div class="form-group">
-                <label class="col-sm-4 control-label">
-                    Conceptos:
-                </label>
-                <div class="col-sm-8">
-                    <input type="button" id="conceptos" onclick="" value="Agregar">
-                </div>
-                <div class="conceptos">
-                    
-                </div>
+            <section></section>
+            <div class="col-sm-8">
+                <input class="btn btn-primary" type="button" value="Agregar" onclick="abrirModal();">
             </div>
-            
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                    .
-                </label>
-                <div class="col-sm-8">
-                    <input type="button" onclick="" value="Continuar">
+        </div>
+    </form>
+    <div class="contienemodal" id="modal1">
+        <div class="modalVisible" id="modal2">
+            <form style="height: 480px;">
+                <h2>Concepto</h2>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Clave de producto o servicio*:
+                    </label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" id="claveprod">
+                    </div>
+                </div><br><br>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Cantidad*:
+                    </label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" id="cantidad">
+                    </div>
+                </div><br><br>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Unidad:
+                    </label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" id="unidad">
+                    </div>
+                </div><br><br>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Clave Unidad*:
+                    </label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" id="claveUnidad">
+                    </div>
+                </div><br><br>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Numero de identificación:
+                    </label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" id="noIdentificacion">
+                    </div>
+                </div><br><br>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Descripción:
+                    </label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" id="descripcion">
+                    </div>
+                </div><br><br>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Valor Unitario:
+                    </label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" id="valorU">
+                    </div>
+                </div><br><br>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Importe*:
+                    </label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" id="importe" disabled>
+                    </div>
+                </div><br><br>
+            </form>
+            <form style="height: 250px;">
+                <h2>Impuestos:</h2>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Impuesto*:
+                    </label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" id="impuesto" value="IVA" disabled>
+                    </div>
+                </div><br><br>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Tasa*:
+                    </label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" id="tasa" value="16" disabled>
+                    </div>
+                </div><br><br>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">
+                        Importe*:
+                    </label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" id="importeTotal" value="Suma de todo con impuesto" disabled>
+                    </div>
+                </div><br><br>
+                <div class="col-sm-4">
+                    <input class="btn btn-default" type="button" value="Cerrar" style="float: none;" onclick="cerrarModal();">
                 </div>
-                
+                <div class="col-sm-4">
+                    <input class="btn btn-primary" type="button" value="Agregar" style="float: none">
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    
+    <form >
+        <h2>Resumen:</h2>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">
+                Subtotal*:
+            </label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="subtotal" value="subtotal" disabled>
             </div>
-        </form>
-        <br>
-        <br>
-        <form style="height: 450px;">
-            <h2>Concepto</h2>
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                    Clave de producto o servicio*:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="claveprod">
-                </div>
-            </div><br><br>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                    Cantidad*:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="cantidad">
-                </div>
-            </div><br><br>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                    Unidad:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="unidad">
-                </div>
-            </div><br><br>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                    Clave Unidad*:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="claveUnidad">
-                </div>
-            </div><br><br>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                    Numero de identificación:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="noIdentificacion">
-                </div>
-            </div><br><br>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                    Descripción:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="descripcion">
-                </div>
-            </div><br><br>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                    Valor Unitario:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="valorU">
-                </div>
-            </div><br><br>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                    Importe*:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="importe" disabled>
-                </div>
-            </div><br><br>
-
-        </form>
-
-
-         <form >
-            <h2>Impuestos:</h2>
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                   Impuesto*:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="impuesto" value="IVA" disabled>
-                </div>
-            </div><br><br>
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                   Tasa*:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="tasa" value="16" disabled>
-                </div>
-            </div><br><br>
-
-
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                   Importe*:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="importeTotal" value="Suma de todo con impuesto" disabled>
-                </div>
-            </div><br><br>
-
-
-        </form>
-
-         <form >
-            <h2>Resumen:</h2>
-            <div class="form-group">
-                <label class="col-sm-4 control-label">
-                   Subtotal*:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="subtotal" value="subtotal" disabled>
-                </div>
-            </div><br><br>
-
-             <div class="form-group">
-                <label class="col-sm-4 control-label">
-                   Total de impuestos trasladados*:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="impuestosTras" value="impuestos trasladados" disabled>
-                </div>
-            </div><br><br>
-
-             <div class="form-group">
-                <label class="col-sm-4 control-label">
-                   Total*:
-                </label>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="total" value="total" disabled>
-                </div>
-            </div><br><br>
-           
-        </form>
-
-      
-
-        <h2><a href = "logout.php">Salir</a></h2>
-    </body>
+        </div><br><br>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">
+                Total de impuestos trasladados*:
+            </label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="impuestosTras" value="impuestos trasladados" disabled>
+            </div>
+        </div><br><br>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">
+                Total*:
+            </label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="total" value="total" disabled>
+            </div>
+        </div><br><br>
+        
+    </form>
+    
+    <h2><a href = "logout.php">Salir</a></h2>
+</body>
 </html>
