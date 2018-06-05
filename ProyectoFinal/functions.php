@@ -37,7 +37,7 @@ function registro($variables)
     desconectar($pdo);
     $_SESSION['login']=true;
     $_SESSION['rfc']=$rfc;
-    header("Location: sistema.php");
+    header("Location: index.php");
 
 
 }
@@ -57,7 +57,7 @@ function login($variables){
         $_SESSION['login']=true;
         $_SESSION['rfc']=$rfc;
         $_SESSION['nombreEmisor'] = $result->NOMBRE;
-        header("Location:sistema.php");
+        header("Location:menu.php");
     }else{
         print "<script type=\"text/javascript\">";
         print "alert('Usuario o contraseña incorrectos')";

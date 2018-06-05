@@ -1,9 +1,3 @@
-function comprobante(){
-
-	location.replace("comprobante.php");
-}
-
-
 function emisorReceptor(){
 
 //Emisor
@@ -29,22 +23,6 @@ function emisorReceptor(){
 }
 
 
-function rellenarReg(){
-
-	saveAjax = new XMLHttpRequest();
-	saveAjax.open('GET',"http://localhost:9999/ProyectoFinal/functions.php?f=regFiscal");
-	saveAjax.send();
-
-	saveAjax.onreadystatechange = function(){
-				if (saveAjax.readyState == 4 && saveAjax.status == 200) {
-					var info = (saveAjax.responseText);
-					document.getElementById('regimenFiscal').innerHTML += info;
-					
-					
-				}
-			}
-
-}
 
 
 function generar(){
@@ -86,6 +64,88 @@ function receptor(){
 					
 				}
 			}
+
+
+}
+
+
+function facturas(){
+
+
+
+	var emisor = sessionStorage.getItem('rfcEmisor');
+
+	saveAjax = new XMLHttpRequest();
+	saveAjax.open('GET',"http://localhost:9999/ProyectoFinal/facturas.php?rfc="+emisor);
+	saveAjax.send();
+
+
+	saveAjax.onreadystatechange = function(){
+				if (saveAjax.readyState == 4 && saveAjax.status == 200) {
+					//console.log(saveAjax.responseText);
+
+
+						document.getElementById('ver').innerHTML = saveAjax.responseText;
+
+					
+					
+					
+					
+				}
+			}
+}
+
+function facturasE(){
+
+
+
+	var emisor = sessionStorage.getItem('rfcEmisor');
+
+	saveAjax = new XMLHttpRequest();
+	saveAjax.open('GET',"http://localhost:9999/ProyectoFinal/facturasE.php?rfc="+emisor);
+	saveAjax.send();
+
+
+	saveAjax.onreadystatechange = function(){
+				if (saveAjax.readyState == 4 && saveAjax.status == 200) {
+					//console.log(saveAjax.responseText);
+
+
+						document.getElementById('ver').innerHTML = saveAjax.responseText;
+
+					
+					
+					
+					
+				}
+			}
+}
+
+
+function eliminar(id){
+
+	var emisor = sessionStorage.getItem('rfcEmisor');
+
+	saveAjax = new XMLHttpRequest();
+	saveAjax.open('GET',"http://localhost:9999/ProyectoFinal/eliminar.php?rfc="+emisor+"&id="+id);
+	saveAjax.send();
+
+
+	saveAjax.onreadystatechange = function(){
+				if (saveAjax.readyState == 4 && saveAjax.status == 200) {
+					//console.log(saveAjax.responseText);
+
+
+						alert("Eliminado exitosamente");
+						location.reload();
+
+					
+					
+					
+					
+				}
+			}
+
 
 
 }
