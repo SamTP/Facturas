@@ -78,8 +78,7 @@
                 </label>
                 <div class="col-sm-8">
                     <select class="form-control" id="formaPago" required>
-                        <option value="Efectivo">01 Efectivo</option>
-                        <option value="Tarjeta">01 Tarjeta</option>
+                    <option value='Efectivo''>Efectivo</option><option value='Cheque nominativo''>Cheque nominativo</option><option value='Transferencia electronica de fondos''>Transferencia electronica de fondos</option><option value='Tarjeta de credito''>Tarjeta de credito</option><option value='Monedero electronico''>Monedero electronico</option><option value='Dinero electronico''>Dinero electronico</option><option value='Vales de despensa''>Vales de despensa</option><option value='Dacion en pago''>Dacion en pago</option><option value='Pago por subrogacion''>Pago por subrogacion</option><option value='Pago por consignacion''>Pago por consignacion</option><option value='Condonacion''>Condonacion</option><option value='Compensacion''>Compensacion</option><option value='Novacion''>Novacion</option><option value='Confusion''>Confusion</option><option value='Remision de deuda''>Remision de deuda</option><option value='Prescripcion o caducidad''>Prescripcion o caducidad</option><option value='A satisfaccion del acreedor''>A satisfaccion del acreedor</option><option value='Tarjeta de debito''>Tarjeta de debito</option><option value='Tarjeta de servicios''>Tarjeta de servicios</option><option value='Aplicacion de anticipos''>Aplicacion de anticipos</option><option value='Intermediario pagos''>Intermediario pagos</option><option value='Por definir''>Por definir</option>
                     </select>
                 </div>
             </div>
