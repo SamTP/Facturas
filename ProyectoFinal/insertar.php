@@ -48,7 +48,7 @@
 	$importeTotal = $_POST['importeTotal'];
 
 	generaXML($rfcEmisor ,$nombreEmisor,$rfCReceptor,$nombreReceptor,
-	$fechaExpedicion,$serie,$folio,$cfdi,$moneda,$regimenFiscal,$conceptos,$subtotal,
+	$fechaExpedicion,$serie,$folio,$cfdi,$moneda,$regimenFiscal,$subtotal,
 	$impuestosTras,$total,$tipoComprobante,$claveprod,$descripcion,$cantidad,$valorU);
 	generaFactura($rfcEmisor,$nombreEmisor,$rfCReceptor,
 	$nombreReceptor,$serie,$folio,$cfdi,$moneda,$regimenFiscal,
