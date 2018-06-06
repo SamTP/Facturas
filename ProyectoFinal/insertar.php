@@ -1,6 +1,8 @@
 <?php 
 
 	require ('LibreriaCon.php');
+	require ('GeneraXML.php');
+	require ('fpdf181/GeneraFactura.php');
 
 	$variables = parse_ini_file('Config.ini');
 	$pdo = conectarMysqlAnx($variables);
@@ -44,6 +46,13 @@
 	$impuesto = $_POST['impuesto'];
 	$tasa = $_POST['tasa'];
 	$importeTotal = $_POST['importeTotal'];
+
+	generaXML($rfcEmisor ,$nombreEmisor,$rfCReceptor,$nombreReceptor,
+	$fecha,$serie,$folio,$cfdi,$moneda,$regimenFiscal,$conceptos,$subtotal,
+	$impuestosTras,$total,$tipoComprobante,$claveprod,$descripcion,$cantidad,$valorU);
+	generaFactura($conceptos,$rfcEmisor,$nombreEmisor,$rfCReceptor,
+	$nombreReceptor,$serie,$folio,$cfdi,$moneda,$regimenFiscal,
+	$subtotal,$impuestosTras,$total,$claveprod,$descripcion,$cantidad,$valorU);
 
     //Comprobante
     $query = "INSERT INTO comprobante VALUES (null,'3.3','$serie', '$folio', '$fechaExpedicion', 'ASHCXJ3243ASDAS23-XE', '$formaPago', 'ASHCXJ3243ASDAS23','45', '$condiciones', '$subtotal', '$moneda', '$tipoCambio', '$total', '$tipoComprobante','$metodoPago', '$lugarExpedicion', '$confirmacion', '$rfcEmisor', '$rfCReceptor');";
