@@ -268,7 +268,7 @@
         
     </form>
     <div class="col-sm-4" style="position: absolute; right: 20px; width: 250px">
-        <input class="btn btn-primary" type="button" value="Guardad Comprobante" style="float: none">
+        <input class="btn btn-primary" type="button" value="Guardad Comprobante" style="float: none" onclick="comprobantes(); insertar();">
     </div>
     <h2><a href = "logout.php">Salir</a></h2>
 </body>

@@ -1,20 +1,23 @@
+var url = "http://localhost:9999/Facturas/ProyectoFinal/"
+
+
 function emisorReceptor(){
 
 //Emisor
 
-	sessionStorage.setItem("rfcEmisor", document.getElementById('rfcEmisor').value);
-	sessionStorage.setItem("nombreEmisor", document.getElementById('nombreEmisor').value);
-	sessionStorage.setItem("regimenFiscal", document.getElementById('regimenFiscal').value);
-	sessionStorage.setItem("tipoComprobante", document.getElementById('tipoComprobante').value);
+		sessionStorage.setItem("rfcEmisor", document.getElementById('rfcEmisor').value);
+		sessionStorage.setItem("nombreEmisor", document.getElementById('nombreEmisor').value);
+		sessionStorage.setItem("regimenFiscal", document.getElementById('regimenFiscal').value);
+		sessionStorage.setItem("tipoComprobante", document.getElementById('tipoComprobante').value);
 
 
-//RECEPTOR
+	//RECEPTOR
 
-	sessionStorage.setItem("rfCReceptor", document.getElementById('rfcReceptor').value);
-	sessionStorage.setItem("nombreReceptor", document.getElementById('nombreReceptor').value);
-	sessionStorage.setItem("residenciaFiscal", document.getElementById('residenciaFiscal').value);
-	sessionStorage.setItem("noRegistro", document.getElementById('noRegistro').value);
-	sessionStorage.setItem("cfdi", document.getElementById('cfdi').value);
+		sessionStorage.setItem("rfCReceptor", document.getElementById('rfcReceptor').value);
+		sessionStorage.setItem("nombreReceptor", document.getElementById('nombreReceptor').value);
+		sessionStorage.setItem("residenciaFiscal", document.getElementById('residenciaFiscal').value);
+		sessionStorage.setItem("noRegistro", document.getElementById('noRegistro').value);
+		sessionStorage.setItem("cfdi", document.getElementById('cfdi').value);
 
 	var conceptos = ['.'];
 	sessionStorage.setItem("conceptos", JSON.stringify(conceptos));
@@ -23,6 +26,75 @@ function emisorReceptor(){
 	location.replace("sistema2.php");
 
 
+}
+function insertar(){
+
+	rfcEmisor = sessionStorage.getItem("rfcEmisor");
+	nombreEmisor = sessionStorage.getItem("nombreEmisor");
+	regimenFiscal = sessionStorage.getItem("regimenFiscal");
+	tipoComprobante= sessionStorage.getItem("tipoComprobante");
+
+	rfCReceptor = sessionStorage.getItem("rfCReceptor");
+	nombreReceptor = sessionStorage.getItem("nombreReceptor");
+	residenciaFiscal = sessionStorage.getItem("residenciaFiscal");
+	noRegistro = sessionStorage.getItem("noRegistro");
+	cfdi = sessionStorage.getItem("cfdi");
+
+	fechaExpedicion = sessionStorage.getItem("fechaExpedicion");
+	lugarExpedicion = sessionStorage.getItem("lugarExpedicion");
+	serie = sessionStorage.getItem("serie");
+	folio = sessionStorage.getItem("folio");
+	moneda = sessionStorage.getItem("moneda");
+	tipoCambio = sessionStorage.getItem("tipoCambio");
+	formaPago = sessionStorage.getItem("formaPago");
+	metodoPago = sessionStorage.getItem("metodoPago");
+	confirmacion = sessionStorage.getItem("confirmacion");
+	condiciones = sessionStorage.getItem("condiciones");
+	tipoRelacion = sessionStorage.getItem("tipoRelacion");
+	subtotal = sessionStorage.getItem("subtotal");
+	impuestosTras = sessionStorage.getItem("impuestosTras");
+	total = sessionStorage.getItem("total");
+
+	conceptos = JSON.parse(sessionStorage.getItem("conceptos"));
+
+	saveAjax = new XMLHttpRequest();
+	saveAjax.open('POST',url+"insertar.php");
+
+	data = "rfcEmisor="+rfcEmisor+"&"
+		+"nombreEmisor="+nombreEmisor+"&"
+		+"regimenFiscal="+regimenFiscal+"&"
+		+"tipoComprobante="+tipoComprobante+"&"
+		+"rfCReceptor="+rfCReceptor+"&"
+		+"nombreReceptor="+nombreReceptor+"&"
+		+"residenciaFiscal="+residenciaFiscal+"&"
+		+"noRegistro="+noRegistro+"&"
+		+"cfdi="+cfdi+"&"
+		+"fechaExpedicion="+fechaExpedicion+"&"
+		+"lugarExpedicion="+lugarExpedicion+"&"
+		+"serie="+serie+"&"
+		+"folio="+folio+"&"
+		+"moneda="+moneda+"&"
+		+"tipoCambio="+tipoCambio+"&"
+		+"formaPago="+formaPago+"&"
+		+"metodoPago="+metodoPago+"&"
+		+"confirmacion="+confirmacion+"&"
+		+"condiciones="+condiciones+"&"
+		+"tipoRelacion="+tipoRelacion+"&"
+		+"subtotal="+subtotal+"&"
+		+"impuestosTras="+impuestosTras+"&"
+		+"total="+total+"&"
+		+"conceptos="+conceptos+"&";
+
+	saveAjax.send(data);
+
+	alert("simon");
+	saveAjax.onreadystatechange = function(){
+		if (saveAjax.readyState == 4 && saveAjax.status == 200) {
+			
+
+
+		}
+	}
 }
 function comprobantes(){
 
@@ -68,6 +140,9 @@ function agregarConceptos(){
 	conceptos.push(array);
 
 	sessionStorage.setItem("conceptos", JSON.stringify(conceptos));
+
+	alert("Concepto Agregado con Exito");
+	cerrarModal();
 }
 
 
@@ -76,7 +151,7 @@ function generar(){
 	//solo genera el html de los option con info de los catalogos
 
 	saveAjax = new XMLHttpRequest();
-	saveAjax.open('GET',"http://localhost:9999/ProyectoFinal/functions.php?f=tipoComprobante");
+	saveAjax.open('GET',url+"functions.php?f=tipoComprobante");
 	saveAjax.send();
 
 	saveAjax.onreadystatechange = function(){
@@ -93,7 +168,7 @@ function receptor(){
 
 	var rfc = document.getElementById('rfcReceptor').value;
 	saveAjax = new XMLHttpRequest();
-	saveAjax.open('GET',"http://localhost:9999/ProyectoFinal/functions.php?f=receptor&rfc="+rfc);
+	saveAjax.open('GET',url+"functions.php?f=receptor&rfc="+rfc);
 	saveAjax.send();
 
 
@@ -123,7 +198,7 @@ function facturas(){
 	var emisor = sessionStorage.getItem('rfcEmisor');
 
 	saveAjax = new XMLHttpRequest();
-	saveAjax.open('GET',"http://localhost:9999/ProyectoFinal/facturas.php?rfc="+emisor);
+	saveAjax.open('GET',url+"facturas.php?rfc="+emisor);
 	saveAjax.send();
 
 
@@ -149,7 +224,7 @@ function facturasE(){
 	var emisor = sessionStorage.getItem('rfcEmisor');
 
 	saveAjax = new XMLHttpRequest();
-	saveAjax.open('GET',"http://localhost:9999/ProyectoFinal/facturasE.php?rfc="+emisor);
+	saveAjax.open('GET',url+"facturasE.php?rfc="+emisor);
 	saveAjax.send();
 
 
@@ -174,7 +249,7 @@ function eliminar(id){
 	var emisor = sessionStorage.getItem('rfcEmisor');
 
 	saveAjax = new XMLHttpRequest();
-	saveAjax.open('GET',"http://localhost:9999/ProyectoFinal/eliminar.php?rfc="+emisor+"&id="+id);
+	saveAjax.open('GET',url+"eliminar.php?rfc="+emisor+"&id="+id);
 	saveAjax.send();
 
 
@@ -196,6 +271,8 @@ function eliminar(id){
 
 
 }
+
+
 
 
 function cerrarModal(){
