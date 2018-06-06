@@ -1,8 +1,8 @@
 <?php
 
 function generaXML($rfcEmisor ,$nombreEmisor,$rfcReceptor,$nombreReceptor,
-$fecha,$serie,$folio,$usoCDFI,$moneda,$regimen,$conceptos,$subtotal,
-$iva,$total,$tipo){
+$fecha,$serie,$folio,$usoCDFI,$moneda,$regimen,$subtotal,
+$iva,$total,$tipo,$claveprod,$descripcion,$cantidad,$valorU){
 
 $variables = parse_ini_file('Config.ini');
 $dir = $variables['DirectorioRaiz'];
@@ -40,6 +40,11 @@ $hijo = $xml->addchild('Regimen', '');
 $hijo->addAttribute('regimen', $regimen);
 $hijo = $xml->addchild('NumSerie', '');
 $hijo->addAttribute('numSerie', $numSerie);
+$hijo = $xml->addchild('Concepto', '');
+$hijo->addAttribute('descripcion', $descripcion);
+$hijo->addAttribute('clave', $claveprod);
+$hijo->addAttribute('cantidad', $cantidad);
+$hijo->addAttribute('valorU', $valorU);
 $hijo = $xml->addchild('Subtotal', '');
 $hijo->addAttribute('subtotal', $subtotal);
 $hijo = $xml->addchild('Iva', '');
