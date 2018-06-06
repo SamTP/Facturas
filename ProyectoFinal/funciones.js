@@ -1,4 +1,10 @@
-var url = "http://localhost:9999/Facturas/ProyectoFinal/"
+var url = "http://localhost:9999/ProyectoFinal/";
+
+var importe;
+
+var iva;
+
+var total;
 
 
 function emisorReceptor(){
@@ -19,12 +25,29 @@ function emisorReceptor(){
 		sessionStorage.setItem("noRegistro", document.getElementById('noRegistro').value);
 		sessionStorage.setItem("cfdi", document.getElementById('cfdi').value);
 
-	var conceptos = [];
-	sessionStorage.setItem("conceptos", JSON.stringify(conceptos));
+	
 
 
 	location.replace("sistema2.php");
 
+
+}
+
+function subtotal(){
+
+	importe = document.getElementById('cantidad').value * document.getElementById('valorU').value;
+
+	document.getElementById('importeTotal').value = importe*1.16;
+
+	iva = importe*0.16;
+	total = importe*1.16;
+
+	document.getElementById('importe').value = importe;
+
+
+	document.getElementById('subtotal').value = importe;
+	document.getElementById('impuestosTras').value = iva;
+	document.getElementById('total').value = total;
 
 }
 function insertar(){
@@ -55,10 +78,22 @@ function insertar(){
 	impuestosTras = sessionStorage.getItem("impuestosTras");
 	total = sessionStorage.getItem("total");
 
-	conceptos = JSON.parse(sessionStorage.getItem("conceptos"));
+	claveprod = sessionStorage.getItem("claveprod");
+	cantidad = sessionStorage.getItem("cantidad");
+	unidad = sessionStorage.getItem("unidad");
+	claveUnidad = sessionStorage.getItem("claveUnidad");
+	noIdentificacion = sessionStorage.getItem("noIdentificacion");
+	descripcion = sessionStorage.getItem("descripcion");
+	valorU = sessionStorage.getItem("valorU");
+	importe = sessionStorage.getItem("importe");
+	impuesto = sessionStorage.getItem("impuesto");
+	tasa = sessionStorage.getItem("tasa");
+	importeTotal = sessionStorage.getItem("importeTotal");
+
+	
 
 	saveAjax = new XMLHttpRequest();
-	saveAjax.open('POST',url+"insertar.php");
+	saveAjax.open('POST',url+"insertar.php?");
 
 	var data = "rfcEmisor="+rfcEmisor+"&"
 		+"nombreEmisor="+nombreEmisor+"&"
@@ -83,7 +118,17 @@ function insertar(){
 		+"subtotal="+subtotal+"&"
 		+"impuestosTras="+impuestosTras+"&"
 		+"total="+total+"&"
-		+"conceptos="+conceptos;
+		+"claveprod="+claveprod+"&"
+		+"cantidad="+cantidad+"&"
+		+"unidad="+unidad+"&"
+		+"claveUnidad="+claveUnidad+"&"
+		+"noIdentificacion="+noIdentificacion+"&"
+		+"descripcion="+descripcion+"&"
+		+"valorU="+valorU+"&"
+		+"importe="+importe+"&"
+		+"impuesto="+impuesto+"&"
+		+"tasa="+tasa+"&"
+		+"importeTotal="+importeTotal;
 
 	saveAjax.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     saveAjax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -92,6 +137,7 @@ function insertar(){
 	alert("simon");
 	saveAjax.onreadystatechange = function(){
 		if (saveAjax.readyState == 4 && saveAjax.status == 200) {
+			console.log(saveAjax.responseText);
 			
 
 
@@ -122,28 +168,20 @@ function comprobantes(){
 
 function agregarConceptos(){
 
-	claveprod = document.getElementById('claveprod').value;
-	cantidad = document.getElementById('cantidad').value;
-	unidad = document.getElementById('unidad').value;
-	claveUnidad = document.getElementById('claveUnidad').value;
-	noIdentificacion = document.getElementById('noIdentificacion').value;
-	descripcion = document.getElementById('descripcion').value;
-	valorU = document.getElementById('valorU').value;
-	importe = document.getElementById('importe').value;
-	impuesto = document.getElementById('impuesto').value;
-	tasa = document.getElementById('tasa').value;
-	importeTotal = document.getElementById('importeTotal').value;
+	sessionStorage.setItem("claveprod", document.getElementById('claveprod').value);
+	sessionStorage.setItem("cantidad", document.getElementById('cantidad').value);
+	sessionStorage.setItem("unidad", document.getElementById('unidad').value);
+	sessionStorage.setItem("claveUnidad", document.getElementById('claveUnidad').value);
+	sessionStorage.setItem("noIdentificacion", document.getElementById('noIdentificacion').value);
+	sessionStorage.setItem("descripcion", document.getElementById('descripcion').value);
+	sessionStorage.setItem("valorU", document.getElementById('valorU').value);
+	sessionStorage.setItem("importe", document.getElementById('importe').value);
+	sessionStorage.setItem("impuesto", document.getElementById('impuesto').value);
+	sessionStorage.setItem("tasa", document.getElementById('tasa').value);
+	sessionStorage.setItem("importeTotal", document.getElementById('importeTotal').value);
 
 
-	var array = [claveprod, cantidad, unidad, claveUnidad, noIdentificacion,descripcion, valorU, importe, impuesto, tasa, importeTotal];
 
-	conceptos = JSON.parse(sessionStorage.getItem("conceptos"));
-
-	conceptos.push(array);
-
-	sessionStorage.setItem("conceptos", JSON.stringify(conceptos));
-
-	alert("Concepto Agregado con Exito");
 	cerrarModal();
 }
 
@@ -177,11 +215,13 @@ function receptor(){
 	saveAjax.onreadystatechange = function(){
 				if (saveAjax.readyState == 4 && saveAjax.status == 200) {
 					console.log(saveAjax.responseText);
+						save = JSON.parse(saveAjax.responseText);
 
 					if (saveAjax.responseText != "no") {
 
-						document.getElementById('nombreReceptor').value = saveAjax.responseText;
-
+						document.getElementById('nombreReceptor').value = save[0].Nombre;
+						document.getElementById('residenciaFiscal').innerHTML +="<option value="+save[0].ResidenciaFiscal+">"+ save[0].ResidenciaFiscal+"</option>";
+					document.getElementById('noRegistro').innerHTML += "<option value="+ save[0].NumRegIdTrib+">"+ save[0].NumRegIdTrib+"</option>";
 					}
 					
 					

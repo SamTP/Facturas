@@ -118,19 +118,19 @@ function receptor($variables, $rfc){
 
     $pdo = conectarMysqlAnx($variables);
 
-    $query = "SELECT RFC, Nombre FROM receptor WHere RFC = '$rfc';";
+    $query = "SELECT RFC, Nombre, ResidenciaFiscal, NumRegIdTrib FROM receptor WHERE RFC = '$rfc';";
     $query = $pdo->prepare($query);
     $query->execute();
-    $result = $query->fetchObject();
+    $result = $query->fetchAll();
     if ($result) {
-        # code...
-        echo($result->Nombre);
+        echo json_encode($result);
     }else{
     echo("no");
     }
 
 
 }
+
 
 function guardarER($variables,$rfcEmisor,$rfcReceptor,$cfdi,$nombreEmisor,$nombreReceptor,$regimen,$residencia,$tipoC,$noR){
 

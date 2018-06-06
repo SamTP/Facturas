@@ -57,7 +57,8 @@
                 </label>
                 <div class="col-sm-8">
                     <select class="form-control" id="moneda" required>
-                        <option value="moneda">Peso Mexicano MXN</option>
+                        <option value="MXN">Peso Mexicano MXN</option>
+                        <option value="USD">Dolar Americano USD</option>
                     </select>
                 </div>
             </div>
@@ -77,7 +78,8 @@
                 </label>
                 <div class="col-sm-8">
                     <select class="form-control" id="formaPago" required>
-                        <option value="formaPago">01 Efectivo</option>
+                        <option value="Efectivo">01 Efectivo</option>
+                        <option value="Tarjeta">01 Tarjeta</option>
                     </select>
                 </div>
             </div>
@@ -87,7 +89,7 @@
                 </label>
                 <div class="col-sm-8">
                     <select class="form-control" id="metodoPago" required>
-                        <option value="metodoPago">01 Pago en una sola exhibición</option>
+                        <option value="Pago en un sola exhibicion">01 Pago en una sola exhibición</option>
                     </select>
                 </div>
             </div>
@@ -118,7 +120,7 @@
                 </label>
                 <div class="col-sm-8">
                     <select class="form-control" id="tipoRelacion" required>
-                        <option value="metodoPago">01 Pago en una sola exhibición</option>
+                        <option value="01">01 Pago en una sola exhibición</option>
                     </select>
                 </div>
             </div>
@@ -149,7 +151,7 @@
                         Cantidad*:
                     </label>
                     <div class="col-sm-8">
-                        <input class="form-control" type="text" id="cantidad">
+                        <input class="form-control" type="text" id="cantidad" onkeyup="subtotal();">
                     </div>
                 </div><br><br>
                 <div class="form-group">
@@ -189,7 +191,7 @@
                         Valor Unitario:
                     </label>
                     <div class="col-sm-8">
-                        <input class="form-control" type="text" id="valorU">
+                        <input class="form-control" type="text" id="valorU" onkeyup="subtotal();">
                     </div>
                 </div><br><br>
                 <div class="form-group">

@@ -1,5 +1,5 @@
 <?php
-//include('login.php');
+include('login.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -86,7 +86,7 @@
                 </label>
                 <div class="col-sm-8">
                     <select class="form-control" id="residenciaFiscal">
-                        <option value="residencia">Residencia Fiscal</option>
+                        <option value="" disabled selected>Seleccione...</option>
                     </select>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                 </label>
                 <div class="col-sm-8">
                     <select class="form-control" id="noRegistro">
-                        <option value="registro">No. de registro de identidad fiscal</option>
+                        <option value="" disabled selected>Seleccione...</option>
                     </select>
                 </div>
             </div>

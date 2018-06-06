@@ -4,7 +4,7 @@
 
 	$variables = parse_ini_file('Config.ini');
 	$pdo = conectarMysqlAnx($variables);
-	print_r($variables);
+	// print_r($variables);
 	session_start();
 
 	$rfcEmisor = $_POST['rfcEmisor'];
@@ -33,12 +33,20 @@
 	$impuestosTras = $_POST['impuestosTras'];
 	$total = $_POST['total'];
 
-	$conceptos = json_decode($_POST['conceptos'], true);
+	$claveprod = $_POST['claveprod'];
+	$cantidad = $_POST['cantidad'];
+	$unidad = $_POST['unidad'];
+	$claveUnidad = $_POST['claveUnidad'];
+	$noIdentificacion = $_POST['noIdentificacion'];
+	$descripcion = $_POST['descripcion'];
+	$valorU = $_POST['valorU'];
+	$importe = $_POST['importe'];
+	$impuesto = $_POST['impuesto'];
+	$tasa = $_POST['tasa'];
+	$importeTotal = $_POST['importeTotal'];
 
-
-    
     //Comprobante
-    $query = "INSERT INTO ('Version', 'Serie', 'Folio', 'Fecha', 'Sello', 'FormaPago', 'Certificado', 'NoCertificado',	'CondicionesDePago', 'SubTotal', 'Moneda', 'TipoCambio', 'Total', 'TipoDeComprobante', MetodoPago, 'LugarExpedicion', 'Confirmacion', 'RFCEmisor', 'RFCReceptor') VALUES ('3.3', $serie, $folio, $fechaExpedicion, 'ASHCXJ3243ASDAS23-XE', $formaPago, 'ASHCXJ3243ASDAS23','45', $condiciones, $subtotal, $moneda, $tipoCambio, $total, $tipoComprobante,$metodoPago, $lugarExpedicion, $confirmacion, $rfcEmisor, $rfCReceptor);";
+    $query = "INSERT INTO comprobante VALUES (null,'3.3','$serie', '$folio', '$fechaExpedicion', 'ASHCXJ3243ASDAS23-XE', '$formaPago', 'ASHCXJ3243ASDAS23','45', '$condiciones', '$subtotal', '$moneda', '$tipoCambio', '$total', '$tipoComprobante','$metodoPago', '$lugarExpedicion', '$confirmacion', '$rfcEmisor', '$rfCReceptor');";
 
     print_r($query);
     
@@ -46,14 +54,18 @@
     $query->execute();
 
 
+
     //Conceptos
     $query = "SELECT idComprobante FROM comprobante WHERE Folio = $folio";
     $query = $pdo->prepare($query);
     $query->execute();
     $idComprobante = $query->fetchAll();
-   
-    $query = "INSERT INTO (ClaveProdServ, NoIdentificacion, Cantidad, Unidad, Descripcion, ValorUnitario, Importe, idComprobante) concepto VALUES ($conceptos=>claveprod, $conceptos=>noIdentificacion,$conceptos=>cantidad,$conceptos=>unidad,$conceptos=>descripcion,$conceptos=>valorU,$conceptos=>importe,$idComprobante);";
 
+    print_r($idComprobante);
+   
+    $query = "INSERT INTO (ClaveProdServ, NoIdentificacion, Cantidad, Unidad, Descripcion, ValorUnitario, Importe, idComprobante) concepto VALUES ($claveprod, $noIdentificacion,$cantidad,$unidad,$descripcion,$valorU,$importe,$idComprobante);";
+
+    print_r($query);
     $query = $pdo->prepare($query);
     $query->execute();
  ?>
