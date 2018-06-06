@@ -19,7 +19,7 @@ function emisorReceptor(){
 		sessionStorage.setItem("noRegistro", document.getElementById('noRegistro').value);
 		sessionStorage.setItem("cfdi", document.getElementById('cfdi').value);
 
-	var conceptos = ['.'];
+	var conceptos = [];
 	sessionStorage.setItem("conceptos", JSON.stringify(conceptos));
 
 
@@ -60,7 +60,7 @@ function insertar(){
 	saveAjax = new XMLHttpRequest();
 	saveAjax.open('POST',url+"insertar.php");
 
-	data = "rfcEmisor="+rfcEmisor+"&"
+	var data = "rfcEmisor="+rfcEmisor+"&"
 		+"nombreEmisor="+nombreEmisor+"&"
 		+"regimenFiscal="+regimenFiscal+"&"
 		+"tipoComprobante="+tipoComprobante+"&"
@@ -83,8 +83,10 @@ function insertar(){
 		+"subtotal="+subtotal+"&"
 		+"impuestosTras="+impuestosTras+"&"
 		+"total="+total+"&"
-		+"conceptos="+conceptos+"&";
+		+"conceptos="+conceptos;
 
+	saveAjax.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    saveAjax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	saveAjax.send(data);
 
 	alert("simon");
