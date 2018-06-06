@@ -1,0 +1,61 @@
+Bases de Datos
+
+Funciones de Grupo
+
+AVG: Obtine el valor promedio de la columna (nums)
+COUNT: Cuenta el total de las filas de una columna
+MAX: Obtiene el valor más alto de la columna
+MIN: Obtiene el valor más bajo de la columna
+SUM: Suma los valores de la columna (nums)
+
+SELECT [columnas], group_function (columna)
+FROM tabla
+WHERE [condicion]
+GROUP BY (columna)
+    Divide las filas de una tabla en grupos más pequeños
+    SELECT department_id, AVG(salary) FROM employees GROUP BY department_id;
+ORDER BY (columna)
+
+//Ejemplo
+
+SELECT AVG(salary),MAX(salary), MIN(salary),SUM(salary)
+FROM employees
+WHERE job_id LIKE '%REP%';
+
+SELECT MIN(hire_date), MAX(hire_date)
+FROM employees;
+
+Funcion COUNT(expr)
+cuenta todo lo que hay en una columna
+//aplica DISTINCT
+
+SELECT COUNT(*)
+FROM employees
+WHERE department_id =50;
+
+SELECT COUNT(commission_pct)
+FROM employees
+WHERE department_id =80;
+
+SELECT COUNT(DISTINCT department_id) 
+FROM employees;
+
+Funciones de Grupo y NULLs
+Las funciones de grupo ignoran los valores nulos de la columna
+
+SELECT AVG(commission_pct) FROM employees;
+
+Funciones para valores NULL
+
+SELECT NVL(commission_pct,0) FROM employees;
+
+SELECT AVG(NVL(commission_pct,0)) FROM employees;
+
+Consultas no validas
+
+SELECT department_id, COUNT (last_name) FROM employees;
+
+Clausula HAVING
+1. Las filas se agrupan
+2. Se aplica la funcion de grupo
+3. Se muestra solo los grupos que coinciden con la clausula HAVING
