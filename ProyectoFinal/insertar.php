@@ -50,7 +50,7 @@
 	generaXML($rfcEmisor ,$nombreEmisor,$rfCReceptor,$nombreReceptor,
 	$fechaExpedicion,$serie,$folio,$cfdi,$moneda,$regimenFiscal,$conceptos,$subtotal,
 	$impuestosTras,$total,$tipoComprobante,$claveprod,$descripcion,$cantidad,$valorU);
-	generaFactura($conceptos,$rfcEmisor,$nombreEmisor,$rfCReceptor,
+	generaFactura($rfcEmisor,$nombreEmisor,$rfCReceptor,
 	$nombreReceptor,$serie,$folio,$cfdi,$moneda,$regimenFiscal,
 	$subtotal,$impuestosTras,$total,$claveprod,$descripcion,$cantidad,$valorU);
 
