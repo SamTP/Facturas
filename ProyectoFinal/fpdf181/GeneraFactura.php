@@ -4,7 +4,7 @@ require('fpdf.php');
 date_default_timezone_set('America/Mexico_City');
 
 
-function generaFactura($conceptos,$rfcEmisor,$nombreEmisor,$rfcReceptor,
+function generaFactura($rfcEmisor,$nombreEmisor,$rfcReceptor,
 $nombreReceptor,$serie,$folio,$usoCDFI,$moneda,$regimen,
 $subtotal,$iva,$total,$claveprod,$descripcion,$cantidad,$valorU){
 

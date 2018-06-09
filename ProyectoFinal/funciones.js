@@ -1,4 +1,4 @@
-var url = "http://localhost:9999/ProyectoFinal/";
+var url = "http://localhost:9999/Facturas/ProyectoFinal/";
 
 var importe;
 
@@ -37,12 +37,13 @@ function subtotal(){
 
 	importe = document.getElementById('cantidad').value * document.getElementById('valorU').value;
 
-	document.getElementById('importeTotal').value = importe*1.16;
-
-	iva = importe*0.16;
-	total = importe*1.16;
+	iva = importe*(document.getElementById('tasa').value);
+	impuestos = parseInt(document.getElementById('tasa').value);
+	console.log(impuestos);
+	total = importe+iva;
 
 	document.getElementById('importe').value = importe;
+	document.getElementById('importeTotal').value = total;
 
 
 	document.getElementById('subtotal').value = importe;
@@ -134,15 +135,15 @@ function insertar(){
     saveAjax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	saveAjax.send(data);
 
-	alert("simon");
+	alert("Comprobante Agregado ");
 	saveAjax.onreadystatechange = function(){
 		if (saveAjax.readyState == 4 && saveAjax.status == 200) {
 			console.log(saveAjax.responseText);
-			
-
+			location.replace('menu.php')
 
 		}
 	}
+	
 }
 function comprobantes(){
 
