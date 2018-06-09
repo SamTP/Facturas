@@ -65,7 +65,7 @@ $pdf->SetXY(0, 30.5);
 $pdf->SetFont('Times', '', 16);
 $pdf->Cell(105, 10, utf8_decode($texto1), 0, 0, "L");
 
-$texto1 = "Lugar,Fecha y Codigo postal de emisión";
+$texto1 = "Fecha:";
 $pdf->SetXY(105, 40.5);
 $pdf->SetFont('Times', 'B', 12);
 $pdf->SetFillColor(182, 232, 245);
